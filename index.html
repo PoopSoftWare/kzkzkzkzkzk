@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <base href="./">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e12">
+  <meta name="description" content="DalaSpace — ойын жеңілдіктері, тегін ойындар және ойын жаңалықтары.">
+  <title>DalaSpace — Ойын әлемін жаңа қырынан аш</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.tgLoadTimeout=setTimeout(()=>window.telegramFallback=true,5000);
+  </script>
+  <script src="https://telegram.org/js/telegram-web-app.js" onload="clearTimeout(window.tgLoadTimeout)" onerror="clearTimeout(window.tgLoadTimeout);window.telegramFallback=true"></script>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="top-left">
+      <button class="brand" data-goto="home" aria-label="DalaSpace">
+        <span class="brand-symbol"><i></i><i></i><i></i></span>
+        <span>Dala<span>Space</span></span>
+      </button>
+    </div>
+    <div class="top-actions">
+      <label class="search">
+        <span>⌕</span><input id="searchInput" type="search" placeholder="Ойын іздеу..." autocomplete="off">
+      </label>
+      <button class="round-btn" id="aboutBtn" aria-label="DalaSpace туралы">?</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="section-home" class="panel active">
+      <div class="intro-row">
+        <div>
+          <p class="micro">ОЙЫН АҒЫНЫ · 02 ҚАЗАН</p>
+          <h1>Бүгін<br><span>не ойнайсың?</span></h1>
+        </div>
+        <div class="intro-copy">
+          <p>DalaSpace ойын бағаларын, тегін ұсыныстарды және ойын жаңалықтарын бір кеңістікте біріктіреді.</p>
+          <button class="text-action" data-goto="explorar">Зерттеуге өту →</button>
+        </div>
+      </div>
+
+      <div class="flow-stage">
+        <div class="spotlight">
+          <div class="spotlight-image" id="spotlightImage"></div>
+          <div class="spotlight-shade"></div>
+          <div class="spotlight-copy">
+            <span class="pill lime">БҮГІНГІ ТАҢДАУ</span>
+            <h2 id="spotlightTitle">Ойын әлеміне ен</h2>
+            <p id="spotlightText">Жаңа ойындарды, жеңілдіктерді және тегін ұсыныстарды бір ағыннан тап.</p>
+            <button class="spotlight-btn" data-goto="ofertas">Жеңілдіктерді көру <b>↗</b></button>
+          </div>
+          <div class="spotlight-index">01 / FLOW</div>
+        </div>
+
+        <aside class="pulse">
+          <div class="pulse-head"><span>LIVE PULSE</span><b>LIVE</b></div>
+          <div class="pulse-number"><strong id="statDeals">—</strong><small>белсенді жеңілдік</small></div>
+          <div class="pulse-divider"></div>
+          <div class="pulse-number"><strong id="statFree">—</strong><small>қазір тегін</small></div>
+          <div class="pulse-divider"></div>
+          <div class="pulse-foot">Деректер ашық үшінші тарап API-лерінен жаңартылады.</div>
+        </aside>
+      </div>
+
+      <div class="flow-note">
+        <span class="note-icon">↗</span>
+        <p><b>DalaSpace дүкен емес.</b> Steam, Epic Games, GOG және басқа платформалардағы ұсыныстарды біріктіретін тәуелсіз агрегатор. Бағалар мен ұсыныстар үшінші тарап API-лерінен алынады; сатып алу мен белсендіру тек ресми дүкенде жүзеге асырылады.</p>
+      </div>
+
+      <section class="module">
+        <div class="module-label"><span>01</span><b>СҮЗГІСІЗ АҒЫН</b><i></i><em>ЖАҢАРТЫЛУДА</em></div>
+        <div id="carousel-nuevos-home" class="flow-rail"></div>
+      </section>
+
+      <section class="module deal-module">
+        <div class="module-label"><span>02</span><b>БАҒА КАРТАСЫ</b><i></i><em>ЕҢ ҮЛКЕН ТӨМЕНДЕУЛЕР</em></div>
+        <div id="carousel-ofertas-home" class="dealboard"></div>
+      </section>
+
+      <section class="module free-module">
+        <div class="module-label"><span>03</span><b>ТЕГІН</b><i></i><em>ҚАЗІР ТЕГІН</em></div>
+        <div id="carousel-gratis-home" class="free-wall"></div>
+      </section>
+
+      <section class="module news-module">
+        <div class="module-label"><span>04</span><b>ЖАҢАЛЫҚТАР</b><i></i><em>ОҚУҒА</em></div>
+        <div id="news-list-home" class="news-stream"></div>
+      </section>
+    </section>
+
+    <section id="section-nuevos" class="panel">
+      <div class="page-top"><p class="micro">DALA / ТАНЫМ</p><h2>Жаңа ойындар</h2><p>Соңғы қосылған ойындар мен жаңа релиздер.</p></div>
+      <div id="grid-nuevos" class="mosaic-grid"></div>
+      <div id="sentinel-nuevos" class="scroll-sentinel"><span></span><span></span><span></span></div>
+    </section>
+
+    <section id="section-gratis" class="panel">
+      <div class="page-top"><p class="micro">ТЕГІН</p><h2>Тегін ойындар</h2><p>Қазір қолжетімді тегін ойындар мен сыйлықтар.</p></div>
+      <div id="grid-gratis" class="mosaic-grid free-page-grid"></div>
+    </section>
+
+    <section id="section-ofertas" class="panel">
+      <div class="page-top"><p class="micro">БАҒА АҒЫНЫ</p><h2>Жеңілдіктер</h2><p>Бағасы төмендеген ойындарды бір жерден тап.</p></div>
+      <div id="grid-ofertas" class="deal-page"></div>
+      <div id="sentinel-ofertas" class="scroll-sentinel"><span></span><span></span><span></span></div>
+    </section>
+
+    <section id="section-noticias" class="panel">
+      <div class="page-top"><p class="micro">СИГНАЛ</p><h2>Ойын жаңалықтары</h2><p>Маңызды ойын жаңалықтарын қысқа әрі ыңғайлы сигналдар ретінде ұсынамыз.</p></div>
+      <div id="news-list" class="news-grid"></div>
+    </section>
+
+    <section id="section-explorar" class="panel">
+      <div class="explore-head">
+        <div><p class="micro">ОЙЫН РАДАРЫ</p><h2>Өз ағыныңды құр</h2><p>Жанр таңда, ізде және жаңа ойындарды аш.</p></div>
+        <div class="explore-command"><span>/</span><input id="searchInputMirror" placeholder="Іздеу..." disabled></div>
+      </div>
+      <div id="genreChips" class="chips"></div>
+      <div id="grid-explorar" class="mosaic-grid explore-grid"></div>
+      <div id="sentinel-explorar" class="scroll-sentinel"><span></span><span></span><span></span></div>
+    </section>
+  </main>
+
+  <nav class="dock">
+    <div class="dock-track">
+      <button class="dock-item active" data-section="home"><span>01</span><b>Ағын</b></button>
+      <button class="dock-item" data-section="gratis"><span>02</span><b>Тегін</b></button>
+      <button class="dock-item" data-section="ofertas"><span>03</span><b>Баға</b></button>
+      <button class="dock-item" data-section="noticias"><span>04</span><b>Күн тәртібі</b></button>
+      <button class="dock-item" data-section="explorar"><span>05</span><b>Зерттеу</b></button>
+    </div>
+  </nav>
+</div>
+
+<div id="sheetBackdrop" class="sheet-backdrop">
+  <div class="detail-sheet">
+    <button class="sheet-close" id="sheetCloseBtn">×</button>
+    <div id="sheetCover" class="sheet-cover"></div>
+    <div class="sheet-body">
+      <p class="micro">DALASPACE / ОЙЫН</p>
+      <h3 id="sheetTitle"></h3>
+      <p id="sheetMeta" class="sheet-meta"></p>
+      <div id="sheetRatings" class="sheet-ratings"></div>
+      <div id="sheetDesc" class="sheet-desc"></div>
+      <div id="sheetStores" class="sheet-stores"></div>
+    </div>
+  </div>
+</div>
+
+<div id="aboutBackdrop" class="sheet-backdrop">
+  <div class="detail-sheet about-sheet">
+    <button class="sheet-close" id="aboutClose">×</button>
+    <div class="sheet-body">
+      <p class="micro">DALASPACE / ТУРАЛЫ</p>
+      <h3>Ойындарды тап.<br>Ресми дүкеннен ал.</h3>
+      <p class="sheet-desc">DalaSpace — тәуелсіз ойын мүмкіндіктері агрегаторы. Біз дүкен де, сатушы да емеспіз.</p>
+      <p class="sheet-desc">Ойын, жеңілдік және сыйлық туралы деректер ашық үшінші тарап API-лерінен алынады. Соңғы бағаны, аймақтық қолжетімділікті және науқан шарттарын ресми дүкен бетінен тексеріңіз.</p>
+      <p class="sheet-meta">DALASPACE · TELEGRAM MINI APP</p>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+<script>
+  // Қазақша интерфейс; API логикасы сақталды.
+  document.addEventListener('DOMContentLoaded',()=>{
+    const s=document.getElementById('searchInput');
+    const m=document.getElementById('searchInputMirror');
+    if(s&&m) s.addEventListener('input',()=>m.value=s.value);
+    const about=document.getElementById('aboutBackdrop'), close=document.getElementById('aboutClose');
+    close?.addEventListener('click',()=>about.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
